@@ -1,0 +1,47 @@
+/* style.css */
+/* Minimalistic custom styles for better readability and ATS friendliness */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure lists are clearly separated */
+ul li {
+    margin-bottom: 0.25rem; /* Adjust as needed */
+}
+
+/* General spacing for sections */
+section {
+    margin-bottom: 1.5rem; /* Adjust as needed */
+}
+
+/* ATS friendly: Clear headings and content */
+h1, h2, h3, h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+/* Ensure links are distinguishable but not overly styled */
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Adjusting for print friendliness - important for ATS */
+@media print {
+    body {
+        background-color: #fff;
+        color: #000;
+    }
+    .max-w-4xl {
+        max-width: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+    header, section {
+        page-break-inside: avoid;
+    }
+}
