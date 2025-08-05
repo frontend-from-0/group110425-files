@@ -9,3 +9,5 @@ true - boolean, positive value
 false - boolean, negative value
 
 undefined - absence of value (by default)
+
+this - keyword that referce to current execution context
