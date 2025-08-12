@@ -9,11 +9,35 @@ Focus: Variables, data types, arithmetic, strings, random numbers, template lite
 // 1. Declare variables firstNumber=5 and secondNumber=3 and log their sum.
 // CODE HERE
 
+const firstNumber = 5;
+const secondNumber = 3;
+
+console.log('EX. 1', firstNumber + secondNumber);
+
 // 2. Declare variables userName and userAge. Log a greeting: "Hello! I am (userName) and I am (userAge) years old."
 // CODE HERE
+// Keywords to create variables are let, const, var
+// IN JS, we use camelCase
+const userName = 'Jason';
+const userAge = 32;
+
+// String interpolation `Some text ${aVariable} some other text`
+console.log(`Hello! I am ${userName} and I am ${userAge} years old.`);
+console.log('Hello! I am ' + userName + ' and I am ' + userAge + ' years old.');
+
+console.log(
+  'Hello! I am '.concat(userName, ' and I am ', userAge, ' years old.'),
+);
 
 // 3. Declare variables a=10 and b=4. Log the result of a-b, a*b, and a/b.
 // CODE HERE
+
+const a = 10;
+const b = 4;
+console.log('Ex. 3', 'a - b =', a - b, 'a * b =', a * b, 'a / b =', a / b);
+console.log(`
+  Ex. 3: a - b = ${a - b} a * b = ${a * b} a / b = ${a / b}
+  `);
 
 // 4. Use template literals to log: "My name is (userName). I like JS."
 // CODE HERE
@@ -21,14 +45,23 @@ Focus: Variables, data types, arithmetic, strings, random numbers, template lite
 // 5. Declare a string password = "securePass". Log the length of password.
 // CODE HERE
 
+const securePass = '1234567';
+
+console.log('The length of the password is:', securePass.length);
+
 // 6. Convert the string "hello world" to uppercase and log it.
 // CODE HERE
+const sentence = 'Hello worl';
+console.log(sentence.toUpperCase(), sentence);
 
 // 7. Concatenate "Hello" and "World" with a space in between and log the result.
 // CODE HERE
 
 // 8. Check the type of a variable, e.g., let x = 42. Log the type using typeof.
 // CODE HERE
+const x = 42 + 10 + 10;
+const y = x + '10';
+console.log('type of x is: ', typeof x, x, typeof y, y);
 
 // 9. Convert the number 100 to a string and log the result.
 // CODE HERE
@@ -36,8 +69,12 @@ Focus: Variables, data types, arithmetic, strings, random numbers, template lite
 // 10. Convert the string "50" to a number and log its type to confirm the conversion.
 // CODE HERE
 
-// 11. Generate a random integer between 0 and 10 and log it.
-// CODE HERE
+// 11. Generate a random integer between 2 and 10 and log it.
+// 0 8 => from 2 to 10
+const randomNumber = Math.floor( Math.random() * 9 ) + 2;
+
+console.log('random number is', randomNumber);
+
 
 // 12. Round the number 3.7 down using Math.floor and 3.2 up using Math.ceil, log both.
 // CODE HERE
