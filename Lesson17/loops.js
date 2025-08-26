@@ -43,6 +43,7 @@ The for...of loop is used to iterate over iterable objects such as Arrays, Strin
 */
 
 const colors = ['red', 'green', 'blue'];
+
 for (const color of colors) {
     console.log(color);
 }

@@ -4,6 +4,20 @@
      to sum all elements in an array of numbers.
    - Log the final sum.
 */
+const numbers = [0, 0, 0, 0, 0];
+
+function sumArray(numbers) {
+  let sum = 0;
+  for (let index = 0; index < numbers.length; index++) {
+    sum = sum + numbers[index];
+  }
+  console.log(`The sum of ${numbers} is: ${sum}`);
+}
+
+sumArray([1, 3, 5, 9, 10]);
+sumArray([1, 1, 1]);
+sumArray(numbers);
+console.log(`---------------------------------`);
 
 /*
 2. Find Maximum Number in an Array
@@ -11,6 +25,22 @@
      through an array and find the largest value.
    - Log the largest value.
 */
+function findMax(numbers) {
+  let maxNumber = numbers[0];
+
+  for (let i = 1; i < numbers.length; i++) {
+    const nextNumber = numbers[i + 1];
+    if (maxNumber < nextNumber) {
+      maxNumber = nextNumber;
+    }
+  }
+
+  console.log('Maximum number is:', maxNumber);
+}
+
+findMax([1, 3, 5, 9, 10]);
+findMax([100, 3, -50, 9, 10]);
+console.log(`---------------------------------`);
 
 /*
 3. Count Odd and Even Numbers
@@ -18,6 +48,22 @@
      of numbers and counts how many are odd and how many are even.
    - Log the counts in the format: "Odd: X, Even: Y"
 */
+function countOddEven(numbers) {
+  let oddCount = 0;
+  let evenCount = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    const reminder = numbers[i] % 2;
+    if (reminder === 0) {
+      evenCount += 1;
+    } else {
+      oddCount += 1;
+    }
+  }
+  console.log(`Odd: ${oddCount}, Even: ${evenCount} `);
+}
+countOddEven([1, 3, 5, 9, 10]);
+countOddEven([1, 2, 5, 9, 10, -11, 3, 0, -9, 10]);
+console.log(`---------------------------------`);
 
 /*
 4. Sum of Numbers in a Range (While Loop)
@@ -32,6 +78,16 @@
      of an array manually using a for loop (without using .reverse()).
    - Log the reversed array.
 */
+function reverseArray(arr) {
+  const reversed = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    reversed.push(arr[i]);
+  }
+  console.log(`Reversed array: ${reversed}`);
+}
+
+reverseArray([1, 2, 3, 4, 5]);
+reverseArray(['john', '45,', true, false, NaN]);
 
 /*
 6. Filter Out Negative Numbers
@@ -60,6 +116,31 @@
    - Log the sum.
    - Example: {a: 10, b: 20, c: 5} -> 35
 */
+
+function sumObjectValues(obj) {
+  let sum = 0;
+  for (const k in obj) {
+    if (typeof obj[k] === 'number') {
+    sum = sum + obj[k];
+    } else {
+      console.log('Current value is not a number, skipping it', obj[k]);
+    }
+  }
+  console.log('Sum of values is:', sum);
+  console.log(`Sum of values is: ${sum}`);
+}
+
+const exampleArray = [1, 2, 3, 4, 2, 23];
+
+const exampleObejct = {
+  a: 123,
+  b: 2131,
+  name: 'John',
+  surname: 'Doe',
+};
+
+sumObjectValues({ a: 10, b: 20, c: 5 });
+sumObjectValues(exampleObejct);
 
 /*
 10. Print Keys of an Object (For-in)
@@ -182,7 +263,6 @@
       - logs the removed person
       - logs the final queue
 */
-
 
 /*
 26. To-Do List Application 
