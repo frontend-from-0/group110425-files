@@ -25,7 +25,9 @@ in Node.js or in your browser's console to see the output.
 2. Each contact is an object with 'name', 'phone', and 
    'email' properties.
 */
-
+const contacts = [
+  { name: 'John', phone: '63 - xx -xx', email: 'john.doe@gmail.com' },
+];
 
 /*
 -----------------------------------------------------------
@@ -38,7 +40,19 @@ Function: displayAllContacts()
 Example output:
   Name: Alice, Phone: 123-456-7890, Email: alice@example.com
 */
+function displayAllContacts() {
+  console.log('Contacts in the contact book:');
+  const sortedContacts = [...contacts].sort((a, b) => a.name.localeCompare(b.name));
 
+  for (const contact of sortedContacts) {
+    console.log(
+      `Name: ${contact.name}, Phone: ${contact.phone}, Email: ${contact.email}`,
+    );
+  }
+
+  console.log('-----------------------------');
+}
+displayAllContacts();
 
 /*
 -----------------------------------------------------------
@@ -50,8 +64,20 @@ Function: addContact(name, phone, email)
   exists before adding. If found, logs a warning and returns.
 - Logs "Contact added successfully." if everything is good.
 */
+function addContact(name, phone, email) {
+  for (let index = 0; index < contacts.length; index++) {
+    const contact = contacts[index];
+    if (contact.name === name) {
+      console.log(
+        `Contact with name ${name} already exists. Will not add again `,
+      );
+      return;
+    }
+  }
 
-
+  contacts.push({ name, phone, email });
+  console.log(`Contact with name ${name} added successfully`);
+}
 /*
 -----------------------------------------------------------
   STEP 4: View a Contact by Name
@@ -61,8 +87,29 @@ Function: viewContact(name)
 - Logs the contact info if found.
 - Otherwise, logs: "No contact found with the name: <name>"
 */
+function viewContact(name) {
+  for (let i = 0; i < contacts.length; i++) {
+    if (contacts[i].name === name) {
+      console.log(
+        `Contact info found: ${name}, ${contacts[i].phone}, ${contacts[i].email} `,
+      );
+      return;
+    }
+  }
+  console.log(`No contact found with the name: ${name}`);
+}
 
-
+function findContact(name, phone, email) {
+  for (let i = 0; i < contacts.length; i++) {
+    if (contacts[i].name === name || contacts[i].phone === phone  || contacts[i].email === email) {
+      console.log(
+        `Contact info found: ${contacts[i].name}, ${contacts[i].phone}, ${contacts[i].email} `,
+      );
+      return;
+    }
+  }
+  console.log(`No contact found with the name: ${name}`);
+}
 /*
 -----------------------------------------------------------
   STEP 5: Update a Contact
@@ -72,7 +119,16 @@ Function: updateContact(name, newPhone, newEmail)
 - Logs "Contact updated successfully." if found.
 - Otherwise, logs: "No contact found with the name: <name>"
 */
-
+function updateContact(name, newPhone, newEmail) {
+  for (i = 0; i < contacts.length; i++) {
+    if (contacts[i].name === name) {
+      contacts[i] = { name, phone: newPhone, email: newEmail };
+      console.log(`Contact with name ${name} updated successfully.`);
+      return;
+    }
+  }
+  console.log(`No contact found with the name: ${name}`);
+}
 
 /*
 -----------------------------------------------------------
@@ -85,8 +141,16 @@ Function: removeContact(name)
 - Logs "Contact removed successfully." if found.
 - Otherwise, logs: "No contact found with the name: <name>"
 */
-
-
+function removeContact(name) {
+  for (let i = 0; i < contacts.length; i++) {
+    if (contacts[i].name === name) {
+      contacts.splice(i, 1);
+      console.log(`Contact removed successfully.`);
+      return;
+    }
+  }
+  console.log(`No contact found with the name: ${name}`);
+}
 /*
 -----------------------------------------------------------
   STEP 7: Testing Our Functions
@@ -95,22 +159,32 @@ Below are some sample function calls to demonstrate the
 Contact Book in action.
 */
 
-console.log("Initial contact list:");
+console.log('Initial contact list:');
 displayAllContacts();
 
-console.log("\nAdding a new contact: Charlie");
-addContact("Charlie", "777-777-7777", "charlie@example.com");
+console.log('\nAdding a new contact: Charlie');
+addContact('Charlie', '777-777-7777', 'charlie@example.com');
 displayAllContacts();
 
 console.log("\nViewing Bob's contact:");
-viewContact("Bob");
+viewContact('Bob');
+console.log("\nViewing Charlie's contact:");
+viewContact('Charlie');
 
 console.log("\nUpdating Bob's contact:");
-updateContact("Bob", "999-999-9999", "bob@updated.com");
-viewContact("Bob");
+updateContact('Bob', '999-999-9999', 'bob@updated.com');
+viewContact('Bob');
 
-console.log("\nRemoving Alice:");
-removeContact("Alice");
+console.log("\nUpdating Charlie's contact:");
+updateContact('Charlie', '999-999-9999', 'charlie@updated.com');
+viewContact('Charlie');
+
+console.log('\nRemoving Bob:');
+removeContact('Bob');
+displayAllContacts();
+
+console.log('\nRemoving Charlie:');
+removeContact('Charlie');
 displayAllContacts();
 
 /*
@@ -119,8 +193,13 @@ displayAllContacts();
 -----------------------------------------------------------
 1. Partial Name Search:
    - Instead of strict ===, use .includes() for the name check.
+
 2. Sort Contacts:
    - Add a function to sort contacts alphabetically by name.
 3. Search by multiple fields:
    - e.g., find a contact by phone number or email.
 */
+
+console.log('TEST:')
+const textContacts = [{name: 'Jane', phone:'phone', email: 'email'}];
+console.log(textContacts.map(contact => contact.name).includes('Jane'));
