@@ -27,6 +27,93 @@ Node.js or a browser console.
    array `_items` to store the cart items.
 3. Add a `viewCart` method to display all items in the cart.
 */
+/* 
+Price:
+{
+  amount: 10.99,
+  currency: 'EUR'
+}
+
+*/
+
+const itemsInTheStore = {
+  carrots: {
+    amount: 0.99,
+    currency: 'EUR',
+  },
+  potatoes: {
+    amount: 0.49,
+    currency: 'EUR',
+  },
+  milk: {
+    amount: 1.49,
+    currency: 'EUR',
+  },
+  cucumber: {
+    amount: 1.49,
+    currency: 'EUR',
+  },
+};
+
+class ShoppingCart {
+  constructor() {
+    this.items = [
+      { name: 'Carrots', quantity: 10, price: itemsInTheStore.carrots.amount },
+    ];
+  }
+
+  viewCart() {
+    // TODO: print a different message if the cart is empty
+    console.log('Cart Items');
+    for (let i = 0; i < this.items.length; i++) {
+      const currentItem = this.items[i];
+      console.log(
+        `${currentItem.name} - ${currentItem.quantity} - ${currentItem.price}`,
+      );
+    }
+    console.log('.................');
+  }
+
+  addItem(name, quantity, price) {
+    for (let i = 0; i < this.items.length; i++) {
+      if (this.items[i].name === name) {
+        console.log(
+          `Item ${name} already exists in the cart, updating quantity...`,
+        );
+        this.items[i].quantity = this.items[i].quantity + quantity;
+        return;
+      } else {
+        console.log('Adding an item to cart...');
+        this.items.push({ name, quantity, price });
+        return;
+      }
+    }
+  }
+
+  removeItem(name) {
+    const itemsArray = this.items;
+
+    for (let i = 0; i < itemsArray.length; i++) {
+      if (itemsArray[i].name === name) {
+        itemsArray.splice(i, 1);
+        console.log(`Item ${name} is removed from the cart.`)
+        return;
+      }
+    }
+    console.log(`Item ${name} is not found in the cart.`)
+  }
+}
+
+const groceryCart = new ShoppingCart();
+groceryCart.viewCart();
+
+groceryCart.addItem('Cucumber', 20, itemsInTheStore.cucumber.amount);
+groceryCart.addItem('Carrots', 2, itemsInTheStore.carrots.amount);
+
+groceryCart.viewCart();
+
+groceryCart.removeItem(`Cucumber`);
+groceryCart.viewCart();
 
 /*
 -----------------------------------------------------------
@@ -71,5 +158,3 @@ Node.js or a browser console.
      code is valid.
 3. Use an object to store discount codes and their values.
 */
-
-
