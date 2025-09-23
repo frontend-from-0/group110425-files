@@ -37,9 +37,43 @@ Test each step by running this file with Node.js.
    - timestamp: default to new Date()
 
 3) Add a `toString()` instance method returning a readable line:
-   e.g., "[2025-09-23 10:12] DEPOSIT +€100.00 (Initial funding)"
+   e.g., "[2025-09-23 10:12] DEPOSIT €100.00 (Initial funding)"
 */
 
+class Transaction {
+  static TransactionType = {
+    deposit: 'DEPOSIT',
+    withdraw: 'WITHDRAW',
+    transferOut: 'TRANSFER_OUT',
+    transferIn: 'TRANSFER_IN',
+    fee: 'FEE',
+    interest: 'INTEREST',
+  };
+  constructor(type, amount, description, meta, timestamp = new Date()) {
+    this.type = type;
+    this.amount = amount;
+    this.description = description;
+    this.meta = meta;
+    this.timestamp = timestamp;
+  }
+
+  toString() {
+    const formattedDateTime = this.timestamp
+      .toISOString()
+      .slice(0, 16)
+      .replace('T', ' ');
+
+    return `[${formattedDateTime}] ${this.type} EUR${this.amount} (${this.description})`;
+  }
+}
+
+const tr1 = new Transaction(
+  Transaction.TransactionType.deposit,
+  500,
+  'Initial deposit',
+  {},
+);
+console.log(tr1.toString());
 
 /*
 -----------------------------------------------------------
@@ -56,7 +90,7 @@ Constructor:
 
 Public methods to implement:
   - getOwnerName() : string
-  - getAccountNumber() : number
+  - getAccountNumber() : string
   - deposit(amount, description?) : void
   - withdraw(amount, description?) : void
   - changePin(oldPin, newPin) : boolean
@@ -71,7 +105,117 @@ Validation rules:
   - deposit/withdraw require amount > 0
   - withdraw must have sufficient balance (for base class)
 */
+class BankAccount {
+  #balance;
+  #pin;
+  #transactions;
 
+  constructor(ownerName, pin, initialBalance = 0, currency = 'EUR') {
+    this.ownerName = ownerName;
+    this.#pin = pin.toString();
+    this.#balance = initialBalance;
+    this.currency = currency;
+    this.#transactions = [];
+    this.accountNumber = Date.now();
+  }
+
+  getOwnerName() {
+    return this.ownerName;
+  }
+
+  getAccountNumber() {
+    return this.accountNumber;
+  }
+
+  deposit(amount, description) {
+    if (amount < 0) {
+      console.error('Only deposit with positive amount is allowed.');
+      return;
+    }
+    const depositTransaction = new Transaction(
+      Transaction.TransactionType.deposit,
+      amount,
+      description,
+    );
+    this.#transactions.push(depositTransaction);
+    this.#balance += amount;
+    console.log(
+      'Deposit is successfully completed.',
+      depositTransaction.toString(),
+    );
+  }
+
+  withdraw(amount, description, pin) {
+    if (pin.toString() !== this.#pin) {
+      console.error('Incorrect pin.');
+      return;
+    }
+
+    if (this.#balance < amount) {
+      console.error('Insufficient funds in the account!');
+      return;
+    }
+    this.#balance -= amount;
+    const withdrawTransaction = new Transaction(
+      Transaction.TransactionType.withdraw,
+      amount,
+      description,
+    );
+    this.#transactions.push(withdrawTransaction);
+    console.log(
+      'Withdrawal is successfully completed.',
+      withdrawTransaction.toString(),
+    );
+  }
+
+  changePin(oldPin, newPin) {
+    if (oldPin.toString() !== this.#pin) {
+      console.error('Incorrect pin.');
+      return false;
+    }
+    // TODO: check if newPin length is 4 or 6 chars
+    this.#pin = newPin.toString();
+    return true;
+  }
+  getBalance(pin) {
+    if (pin.toString() !== this.#pin) {
+      console.error('Incorrect pin.');
+      return;
+    }
+    console.log('Current balance is:', this.#balance);
+    return this.#balance;
+  }
+
+  getTransactions(pin) {
+    if (pin.toString() !== this.#pin) {
+      console.error('Incorrect pin.');
+      return;
+    }
+    console.log('Transactions:');
+    console.table(this.#transactions);
+    return this.#transactions;
+  }
+}
+
+const bankAccount = new BankAccount(
+  'Anna',
+  '1234',
+  (initialBalance = 0),
+  (currency = 'EUR'),
+);
+bankAccount.deposit(2000, 'Salary');
+bankAccount.withdraw(25, 'Groceries', 1230);
+bankAccount.getBalance(1230);
+
+bankAccount.withdraw(25, 'Groceries', 1234);
+bankAccount.getBalance(1234);
+
+bankAccount.changePin(1234, '0000');
+bankAccount.withdraw(25, 'Groceries', 1234);
+bankAccount.getBalance(1234);
+bankAccount.withdraw(25, 'Groceries', '0000');
+bankAccount.getBalance('0000');
+bankAccount.getTransactions('0000');
 
 /*
 -----------------------------------------------------------
@@ -90,8 +234,6 @@ Validation rules:
      where fee is a flat fee (e.g., €5).
    - Provide static FEE = 5
 */
-
-
 
 /*
 -----------------------------------------------------------
