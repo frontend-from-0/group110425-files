@@ -5,3 +5,32 @@
   padding: 10px 12px;
   display: inline-block; 
 }
+
+body {
+  background-color: rgb(245, 245, 220);
+  color: rgb(39, 38, 38);
+}
+
+
+
+.dark {
+  color: rgb(182, 178, 178);
+  background-color: rgb(39, 38, 38);
+}
+
+
+.image-xs {
+  max-width: 300px;
+}
+
+.image-sm {
+  max-width: 500px;
+}
+
+.image-md {
+  max-width: 600px;
+}
+
+.image-md {
+  max-width: 800px;
+}
