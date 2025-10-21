@@ -33,7 +33,7 @@ input {
 }
 
 .input-error {
-  color: rgb(98, 37, 37);
+  color: #8fccb8;
   font-size: 14px;
 }
 
@@ -49,6 +49,10 @@ input {
   background-color: #fff;
 }
 
+.btn-success:disabled {
+  background-color: #8fccb8;
+  color: #214a3d;
+}
 
 
 

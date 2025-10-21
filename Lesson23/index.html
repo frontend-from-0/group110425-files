@@ -37,7 +37,9 @@
           placeholder="Sophia"
           name="firstname"
         />
+        <p id="firstnameError" class="input-error hidden"></p>
       </div>
+     
       <div class="input-group">
         <label for="lastname">Last Name</label>
         <input id="lastname" type="text" placeholder="Clark" name="lastname" />
@@ -60,7 +62,7 @@
         <label for="cvv">CVV</label>
         <input id="cvv" type="text" placeholder="123" name="cvv" />
       </div>
-      <button type="submit" class="btn-success">Place Order</button>
+      <button type="submit" class="btn-success" id="successButton" disabled>Place Order</button>
     </form>
     <div class="hidden" id="success">
       <p>Success!</p>
