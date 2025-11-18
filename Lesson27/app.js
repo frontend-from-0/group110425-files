@@ -12,21 +12,3 @@ HTTP status codes are three-digit numbers that the server sends in response to a
 400... - Errors (400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found)
 500... - Service error (500 Internal Server Error, 502 Bad Gateway, 503 Service Unavailable)
 */
-
-const URL = 'https://jsonplaceholder.typicode.com/posts';
-
-function getPosts() {
-}
-
-function getPostById() {
-
-}
-
-function createPost() {
-}
-
-function updatePost() {
-}
-
-function deletePost() {
-}
