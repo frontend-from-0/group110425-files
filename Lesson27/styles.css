@@ -8,6 +8,14 @@ body {
   padding: 0;
   background-color: #f2f2f2;
 }
+nav {
+  display: flex;
+  gap: 30px;
+  max-width: 600px;
+  margin: auto;
+  height: 80px;
+  align-items: center;
+}
 
 .container {
   max-width: 800px;
@@ -46,7 +54,7 @@ ul {
 
 .button {
   padding: 10px 20px;
-  
+
   color: white;
   border: none;
   border-radius: 4px;
@@ -56,13 +64,12 @@ ul {
 }
 
 .button--success {
-  background-color: #4CAF50;
+  background-color: #4caf50;
 }
 
 .button--success:hover {
   background-color: #45a049;
 }
-
 
 .button--danger {
   background-color: #7a0916;
