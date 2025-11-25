@@ -58,7 +58,38 @@ console.log("Promise created. Waiting for it to resolve or reject...");
 
 // Examples of making a function asyncronous
 // Function declaration
+async function getData() {
+  const res = await fetch('some-api');
+  const data = await res.json();
+  console.log(data);
+}
+
 // Function expression
+const getAnotherData = async function () {
+  const res = await fetch('some-api');
+  const data = await res.json();
+  console.log(data);
+}
+
 // Arrow function
+const getSomeMoreData = async () => {
+  const res = await fetch('some-api');
+  const data = await res.json();
+  console.log(data);
+}
 
 // Try, catch, finally
+
+
+const getSomeMoreDataWithErrorHandling = async () => {
+  try {
+    const res = await fetch('some-api');
+    if (!res.ok) throw Error('Some error happened!');
+    const data = await res.json();
+    console.log(data);
+  } catch (error) {
+    // handle the error in some way
+  } finally {
+    // do something no matter what was the result
+  }  
+}
