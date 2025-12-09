@@ -3,10 +3,13 @@
 const numbersExercise1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 
+console.log(numbersExercise1.filter(number => number % 2 === 1));
+
+
 // Exercise 2:
 // Given an array of strings, filter out the strings that contain the letter "a".
 const wordsExercise2 = [
-	'apple',
+	'Apple',
 	'banana',
 	'car',
 	'dog',
@@ -18,6 +21,7 @@ const wordsExercise2 = [
 	'jungle',
 ];
 
+console.log(wordsExercise2.filter(word => word.toLowerCase().includes('a')))
 
 // Exercise 3:
 // Given an array of objects representing books, filter out the books with a price less than $10.
@@ -83,6 +87,8 @@ const booksExercise9 = [
 		price: 9.99,
 	},
 ];
+
+console.log(booksExercise9.filter(book => book.price < 10));
 
 
 // Exercise 4:
@@ -176,7 +182,7 @@ const sentencesExercise5 = [
 	'The butterfly gracefully fluttered its wings, showcasing vibrant colors in a delicate dance.',
 ];
 
-
+console.log(sentencesExercise5.filter(sentence => sentence.split(' ').length >10));
 // Exercise 6:
 // Given an array of products, filter out the products that are out of stock (where the quantity is 0).
 const productsExercise6 = [
@@ -325,6 +331,12 @@ const studentsExercise9 = [
 		grade: 'B-',
 	},
 ];
+
+const goodGrades = ['A+', 'A', 'A-', 'B+', 'B', 'B-'];
+const goodGradesRegex = /^(A\+|A-|A|B\+|B-|B)$/;
+
+console.log(studentsExercise9.filter(student => goodGradesRegex.test(student.grade)))
+
 
 // Exercise 10:
 // Given an array of user objects, filter out the users who have a name starting with the letter "J".

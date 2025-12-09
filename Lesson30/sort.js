@@ -1,13 +1,24 @@
+
+const exampleLetters = ['l', 'e', 'a', 'r', 'n'];
+const sortedArray = [...exampleLetters].sort();
+console.log('Sorted letters:', sortedArray);
+
 // Exercise 1:
 // Given an array of numbers, filter out the even numbers.
 // Expected output: [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
 const numbers = [3, 1, 4, 11, 5, 9, 2, 6, 5, 3, 5];
 
+console.log(numbers.sort((a,b) => a - b));
+
+
+
 
 // Exercise 2: Sorting Strings
 // Sort an array of strings in alphabetical order.
 // Expected output: ["apple", "banana", "grape", "orange", "pear"]
-const fruits = ["banana", "apple", "pear", "orange", "grape"];
+const fruits = ["Banana", "apple", "Pear", "orange", "grape"];
+
+console.log(fruits, fruits.map(fruit => fruit.toLowerCase()).sort());
 
 
 // Exercise 3: Descending Order

@@ -101,8 +101,9 @@ console.log(composedFunction(7)); // Output: 14
 10. **Currying**: Currying is the process of converting a function that takes multiple arguments into a series of functions that take one argument each. This can help with function composition and partial application.
 
 ```
-const add = (a) => (b) => a + b;
-const addFive = add(5);
+const add = (a) => (b) => a + b; // const add = (a, b) =>  a + b;
+
+const addFive = add(5); // result: (b) => 5 + b;
 
 console.log(addFive(3)); // Output: 8
 ```

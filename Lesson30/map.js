@@ -14,10 +14,13 @@ const wordsExercise1 = [
 ];
 
 
+console.log('Ex. 1', wordsExercise1.map(word => word.toUpperCase()));
 
 // Exercise 2:
 // Given an array of numbers, square each number using .map().
 const numbersExercise2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+console.log(numbersExercise2.map((number, index) => `Square of the number ${number} at position ${index} is ${number*number}`));
 
 
 // Exercise 3:
@@ -84,6 +87,8 @@ const products = [
 		model: 'Charge 4',
 	},
 ];
+
+console.log(products.map(product => product.name));
 
 // Exercise 4:
 // Given an array of words, find the length of each word using .map().
@@ -165,6 +170,10 @@ const studentsExercise5 = [
 	},
 ];
 
+function getNameAndGrade ( studentObject) {
+	return studentObject.name + ' ' + studentObject.grade;
+};
+console.log(studentsExercise5.map(student => getNameAndGrade(student)))
 
 // Exercise 6:
 // Given an array of numbers, convert each number to a string representation using .map().

@@ -9,11 +9,36 @@
 - initialValue: An optional initial value for the accumulator. If not provided, the first element of the array is used as the initial value and the iteration starts from the second element.
 */
 
-
 // Exercise 1:
 // Calculate the sum of all numbers in the given array.
 const numbersEx1 = [1, 2, 3, 4, 5];
 
+const result1 = numbersEx1.reduce(
+  (accumulator, currentValue, currentIndex, array) => {
+    console.log(
+      'Accumulator',
+      accumulator,
+      'currentValue',
+      currentValue,
+      'currentIndex',
+      currentIndex,
+      'array',
+      array,
+    );
+
+    const res = accumulator + currentValue;
+    console.log(res);
+    return res;
+  },
+);
+
+// Name of the params could change but the position should always be the same!
+numbersEx1.reduce((acc, val, _, array) => {
+  console.log('Our array is', array);
+  return acc + val;
+});
+
+console.log('Result for ex. 1', result1);
 
 // Exercise 2:
 // Find the maximum value in the given array. (Hint: Use -Infinity to compare values to)
@@ -34,11 +59,9 @@ const elementCounts = elements.reduce((accumulator, currentValue) => {
 
 console.log(elementCounts); // Output: { a: 3, b: 2, c: 1 }
 
-
 // Exercise 4:
 // Calculate the average of all numbers in the given array.
 const numbersEx4 = [10, 20, 30, 40, 50];
-
 
 // Exercise 5: Explain the code below
 // Count the number of unique elements in the array.
@@ -53,10 +76,3 @@ const uniqueCount = numbers.reduce((accumulator, currentValue) => {
 }, []).length;
 
 console.log(uniqueCount); // Output: 5
-
-
-
-
-
-
-
