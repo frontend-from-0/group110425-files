@@ -12,27 +12,15 @@ const numbers = ['hello', null, true, undefined, function () {console.log(hello)
 // With destructuring
 // const [first, second, third, fourth, fifth] = numbers;
 
-// console.log(first); // 1
-// console.log(second); // 2
-// console.log(third); // 3
-// console.log(fourth); // 4
-// console.log(fifth); // 5
-// console.log('--------'); // 4
-
 
 
 // Skipping Elements
-// const [first, , , fourth] = [0, 0, 0];
-// console.log(first); 
-// console.log(fourth);
+const [, , , fourth] = [0, 0, 0, 1];
 // console.log('--------'); // 4
 
 
 // Using Rest Parameters to Capture the Rest of the Elements
 const [first, second, ...remaningElementsArray] = numbers;
-// console.log(first); // 1
-// console.log(second); // 2
-// console.log(rest); // [3, 4, 5]
 console.log(first, second, remaningElementsArray);
 
 // function useState () {
@@ -81,8 +69,6 @@ const person = {
 
 // Renaming Variables
 // const { age: personAge, name } = person;
-// const age = person.age;
-// const name = person.name;
 
 
 // console.log(name); // Alice
@@ -115,18 +101,17 @@ const {
   contact: { email, phone, address: {line1, postcode: postalCode} } 
 } = personWithContactInfo;
 
-// console.log(firstName); // Dave
-// console.log(email); // dave@example.com
-// console.log(phone); // 123456789
-// console.log(line1); // Kungstagatan 1
-// console.log(postalCode); // 444222
+console.log(firstName); // Dave
+console.log(email); // dave@example.com  -> personWithContactInfo.contact.email
+console.log(phone); // 123456789
+console.log(line1); // Kungstagatan 1
+console.log(postalCode); // 444222
 
 
 
 // Rest Properties
 const { name: nameForRestExample, age: ageForRestExample, ...rest } = personWithContactInfo;
-console.log(nameForRestExample);
-console.log(ageForRestExample);
+
 console.log(rest);
 
 // In JS, ... is called 'rest operator'
